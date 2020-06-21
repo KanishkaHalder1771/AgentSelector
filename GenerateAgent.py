@@ -19,3 +19,5 @@ def generate_issue():
     issue = Issue(issue_roles)
     return issue
 
+def generate_issues(num_issues=10):
+    return [generate_issue() for i in range(num_issues)]

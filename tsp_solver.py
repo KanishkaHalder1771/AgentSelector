@@ -1,27 +1,27 @@
 from __future__ import print_function
 from ortools.constraint_solver import routing_enums_pb2
 from ortools.constraint_solver import pywrapcp
+from GenerateAgent import generate_issue, generate_agents
 
 def intersection(lst1, lst2):
     intersection_lst = [value for value in lst1 if value in lst2]
     return intersection_lst
 
-def generate_distance(agents,issues):
-    from GenerateAgent import generate_issue, generate_agents
+def generate_distance(agents_list, issues_list):
     #agents = generate_agents(5)
     #issues = [generate_issue() for x in range(2)]
     distance = []
     m = 999999
-    for issue in issues:
-        distance_list = [0 for x in range(len(issues)+len(agents))]
+    for issue in issues_list:
+        distance_list = [0 for x in range(len(issues_list) + len(agents_list))]
         ix = 0
-        for issue_internal in issues:
+        for issue_internal in issues_list:
             if issue_internal == issue:
                 ix += 1
                 continue
             distance_list[ix] = m
             ix+=1
-        for agent_internal in agents:
+        for agent_internal in agents_list:
             intersection_list = intersection(issue.roles,agent_internal.roles)
             val = 1/len(intersection_list) if len(intersection_list) != 0 else 2
             val2 = len(intersection_list)
@@ -29,17 +29,16 @@ def generate_distance(agents,issues):
             ix+=1
         distance.append(distance_list)
         #print(distance_list)
-    for agent in agents:
-        distance_list = [0 for x in range(len(issues) + len(agents))]
+    for agent in agents_list:
+        distance_list = [0 for x in range(len(issues_list) + len(agents_list))]
         distance.append(distance_list)
         #print(distance_list)
     return distance
 def create_data_model(agent_list, issue_list):
     """Stores the data for the problem."""
-    data = {}
-    data['distance_matrix'] = generate_distance(agent_list,issue_list)
-    data['num_selector'] = 1
-    data['start'] = 0
+    data = {'distance_matrix': generate_distance(agent_list, issue_list),
+            'num_selector': 1,
+            'start': 0}
     return data
 
 
