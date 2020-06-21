@@ -33,12 +33,12 @@ The motive is to assign an Issue to an Agent such that their roles match.
 /Test/Agent.csv
 /Test/Issue.csv
 
-#### Soution:
+#### Solution:
 First an Agent Class and Issue Class is created in the Class.&#8203;py file with the above mentioned attributes.
 Each Agent has some specific roles and each Issue has some specific roles. An Issue needs an Agent with as many matching roles to handle the Issue request efficiently.This program attempts to allocate each Issue with an Agent to maximize the overall number of matching roles. In this scenario there are multiple Issues and we have to ensure that the overall compatibility of each Issue with its allocated Agent is maximum.
 
 This problem can be converted into a Travelling Salesman Problem very easily. We consider each Issue and each Agent as a node. The cost between one issue to another is infinite(very high cost) i.e. we cannot allocate one Issue to another Issue, we have to allocate an Issue to an Agent. Thus the cost between an Issue and an Agent is 1/(no. of matching roles they have). For eg. if Issue1 has roles 'admin', 'technical' and 'sales', and Agent2 has roles 'sales', 'support' and 'management' the cost from Issue1 to Agent2 is 1/2 = 0.5 as there are 2 matching roles 'sales' and 'technical'. Since in a Travelling Saleman Problem each node is visited only once (other than the starting node), minimizing the cost will give us the total least cost path. Also the only costs in the cost matrix is from an Issue to an Agent. So we get the overall least cost. From the path we can determine which Agent is allocated to which Issue.
-If the number of Issues is greater than the number of Agents then some of the Issues will be unhandeled as there would be a dearth of Agents.
+If the number of Issues is greater than the number of Agents then some of the Issues will be unhandled as there would be a dearth of Agents.
 
 
 
