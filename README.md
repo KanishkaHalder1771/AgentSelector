@@ -10,7 +10,9 @@ $ pip install -r requirements.txt
 ```
   - Run AgentSelector.&#8203;py file to get a randomly generated Agent List, Issue List and the
   allocation of Agents to Issues in a table format.
+  
      ---OR---
+     
     Run Test/test.py . This file runs takes the agent list from Agent.csv file and the issue list from Issue.csv file.
     Make changes to the Agent.csv and Issue.csv to run custom inputs through the agent selector function.
     The output is a table showing which agent is allocated to which issue.
