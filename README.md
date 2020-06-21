@@ -28,11 +28,17 @@ The motive is to assign an Issue to an Agent such that their roles match.
 
 #### Files:
 /Class.py
+
 /GenerateAgent.py
+
 /tsp_solver.py
+
 /AgentSelector.py
+
 /Test/test.py
+
 /Test/Agent.csv
+
 /Test/Issue.csv
 
 #### Solution:
