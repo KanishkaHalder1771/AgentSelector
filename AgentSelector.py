@@ -9,37 +9,37 @@ def intersection(lst1, lst2):
     intersection_lst = [value for value in lst1 if value in lst2]
     return intersection_lst
 
-def all_available_mode(issue,valid_agent_list,agent_priority_list):
-    p_table = PrettyTable()
-    p_table.add_column(fieldname='Issues', column=[issue.id])
-    if len(valid_agent_list) > 0:
-        p_table.add_column(fieldname='Agent',column=[[agent.id for agent in valid_agent_list]])
-    else:
-        max_match = max(agent_priority_list,key=lambda x: x[1])
-        print(max_match)
-        p_table.add_column(fieldname='Agent',column=[[agent[0].id for agent in agent_priority_list if agent[1] == max_match]])
-    print(p_table.get_string())
+# def all_available_mode(issue,valid_agent_list,agent_priority_list):
+#     p_table = PrettyTable()
+#     p_table.add_column(fieldname='Issues', column=[issue.id])
+#     if len(valid_agent_list) > 0:
+#         p_table.add_column(fieldname='Agent',column=[[agent.id for agent in valid_agent_list]])
+#     else:
+#         max_match = max(agent_priority_list,key=lambda x: x[1])
+#         print(max_match)
+#         p_table.add_column(fieldname='Agent',column=[[agent[0].id for agent in agent_priority_list if agent[1] == max_match]])
+#     print(p_table.get_string())
+#
 
+# def single_issue_selector(agent_list,issue,mode='all_available'):
+#     #Searching for all suitable agents
+#
+#     for agent in agent_list:  # Removing all Unavailable agents
+#         if not agent.is_available:
+#             agent_list.remove(agent)
+#
+#     valid_agents = [] #For agents matching all roles of the issue
+#     agent_priority_list = [] #For storing agents and the number of roles matched with the roles of the issue
+#     for agent in agent_list:
+#         match_size = len(intersection(agent.roles,issue.roles))
+#         if match_size == len(issue.roles):
+#             valid_agents.append(agent)
+#         agent_priority_list.append([agent,match_size])
+#
+#     if mode == 'all_available':
+#         all_available_mode(issue,valid_agents,agent_priority_list)
 
-def single_issue_selector(agent_list,issue,mode='all_available'):
-    #Searching for all suitable agents
-
-    for agent in agent_list:  # Removing all Unavailable agents
-        if not agent.is_available:
-            agent_list.remove(agent)
-
-    valid_agents = [] #For agents matching all roles of the issue
-    agent_priority_list = [] #For storing agents and the number of roles matched with the roles of the issue
-    for agent in agent_list:
-        match_size = len(intersection(agent.roles,issue.roles))
-        if match_size == len(issue.roles):
-            valid_agents.append(agent)
-        agent_priority_list.append([agent,match_size])
-
-    if mode == 'all_available':
-        all_available_mode(issue,valid_agents,agent_priority_list)
-
-def printAgents(agent_list):
+def printAgents(agent_list): #Prints the list of agents in a table format
     table = PrettyTable()
     table.field_names = ['Agent Id','Availability', 'Roles']
     for agent in agent_list:
@@ -48,7 +48,7 @@ def printAgents(agent_list):
     print('Agents:')
     print(table.get_string(),'\n')
 
-def printIssues(issue_list):
+def printIssues(issue_list): #Prints the list of issues in a table format
     table = PrettyTable()
     table.field_names = ['Issue Id', 'Roles']
     for issue in issue_list:

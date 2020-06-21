@@ -1,0 +1,16 @@
+ID,Availability,Roles
+1,FALSE,"admin, support, sales"
+2,TRUE,"sales, technical"
+3,TRUE,support
+4,TRUE,"management, admin"
+5,FALSE,"admin, support"
+6,TRUE,"support, technical"
+7,TRUE,"admin, support, management"
+8,FALSE,"technical, management"
+9,FALSE,sales
+10,TRUE,"sales, admin, technical, management"
+11,TRUE,"admin, support,sales"
+12,TRUE,"admin, technical, sales"
+13,TRUE,technical
+14,TRUE,"support, management"
+15,TRUE,"sales, technical"
