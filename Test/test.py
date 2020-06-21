@@ -1,5 +1,6 @@
 from AgentSelector import selector
 from Class import Agent, Issue
+
 import csv
 import time
 import json
@@ -31,3 +32,6 @@ def test_selector():
             issue_list.append(issue)
     #print([json.dumps(agent.__dict__) for agent in issue_list])
     selector(agent_list,issue_list)
+
+if __name__=='__main__':
+    test_selector()
